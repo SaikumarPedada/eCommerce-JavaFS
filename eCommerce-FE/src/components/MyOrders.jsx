@@ -56,10 +56,12 @@ const MyOrders = () => {
             <h5>Order :{order.id} — {new Date(order.orderDate).toLocaleString()}</h5>
             <p><strong>Delivery Address:</strong> {order.deliveryAddress}</p>
             <p><strong>Payment Mode:</strong> {order.paymentMode}</p>
-            {order.orderItems && order.orderItems.map(item => (
+            <div key={order.id} className="mb-4">
+              {order.orderItems && order.orderItems.map(item => (
               <p><strong>Quantity Ordered: </strong>{item.quantity}<br />
               <strong>Total Amount Payable: </strong>{item.price * item.quantity}</p>
             ))}
+            </div>
             <Row>
               {order.orderItems && order.orderItems.map(item => (
                 <Col md={4} key={item.productId} className="mb-3">
